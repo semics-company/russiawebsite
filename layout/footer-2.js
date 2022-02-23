@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-function Footer2() {
+function Footer2({siteInfoData,serviceData}) {
   return (
     <>
     {/* <!-- Footer --> */}
@@ -9,14 +9,14 @@ function Footer2() {
 			<div className="dlab-subscribe style-1 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
 				<div className="row align-items-center">
 					<div className="col-lg-7">
-						<h2 className="title text-right">Subscribe To Our Newsletter For Latest Update</h2>
+						<h2 className="title text-right">در خبرنامه شرکت کنید تا از اخرین اخبار با خبر باشید!</h2>
 					</div>
 					<div className="col-lg-5">
 						<form style={{direction:"ltr"}} className="dzSubscribe" method="post">
 							<div className="dzSubscribeMsg"></div>
 							<div className="form-group">
 								<div className="input-group">
-									<input name="dzEmail" required="required" type="email" className="form-control" placeholder="Your Email Address"/>
+									<input name="dzEmail" required="required" type="email" className="form-control" placeholder="ایمیل خود را وارد کنید."/>
 									<div className="input-group-addon">
 										<button name="submit" value="Submit" type="submit" className="btn btn-primary gradient fa fa-paper-plane-o"></button>
 									</div>
@@ -33,21 +33,21 @@ function Footer2() {
 					<div className="col-xl-3 col-lg-4 col-sm-6 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s">
                         <div className="widget widget_about">
 							<div className="footer-logo">
-								<a href="/"><img src="images/logo-white.png" alt=""/></a> 
+								<a href="/"><img style={{width:"200px"}} src="images/whiteLogo.svg" alt=""/></a> 
 							</div>
 							<div className="widget widget_getintuch">
 								<ul>
 									<li>
 										<i className="fa fa-phone gradient"></i>
-										<span>+91 123-456-7890<br/>+91 987-654-3210</span> 
+										<span>{siteInfoData.tel}</span> 
 									</li>
 									<li>
 										<i className="fa fa-envelope gradient"></i> 
-										<span>info@example.com <br/>info@example.com</span>
+										<span>{siteInfoData.email}</span>
 									</li>
 									<li>
 										<i className="fa fa-map-marker gradient"></i>
-										<span>Marmora Road Chi Minh City, Vietnam</span>
+										<span>{siteInfoData.address}</span>
 									</li>
 								</ul>
 							</div>
@@ -55,37 +55,23 @@ function Footer2() {
                     </div>
 					<div className="col-xl-3 col-lg-2 col-sm-6 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.4s">
 						<div className="widget widget_services">
-							<h5 className="footer-title">Our links</h5>
+							<h5 className="footer-title">صفحات ما</h5>
 							<ul>
-								<li><Link href="#"><a>Home</a></Link></li>
-								<li><Link href="#"><a>About Us</a></Link></li>
-								<li><Link href="#"><a>Services</a></Link></li>
-								<li><Link href="#"><a>Team</a></Link></li>
-								<li><Link href="#"><a>Blog</a></Link></li>
+								<li><Link href="#"><a>خانه</a></Link></li>
+								<li><Link href="#"><a>درباره ما</a></Link></li>
+								<li><Link href="#"><a>خدمات</a></Link></li>
+								<li><Link href="#"><a>دانشگاه ها</a></Link></li>
+								<li><Link href="#"><a>کشور ها</a></Link></li>
 							</ul>
 						</div>
                     </div>
 					<div className="col-xl-3 col-lg-3 col-sm-6 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.6s">
 						<div className="widget widget_services">
-							<h5 className="footer-title">Our Services</h5>
+							<h5 className="footer-title">خدمات ما</h5>
 							<ul>
-								<li><Link href="#"><a>Strategy & Research</a></Link></li>
-								<li><Link href="#"><a>Web Development</a></Link></li>
-								<li><Link href="#"><a>Web Solution</a></Link></li>
-								<li><Link href="#"><a>Digital Marketing</a></Link></li>
-								<li><Link href="#"><a>App Design </a></Link></li>
-							</ul>
-						</div>
-                    </div>
-					<div className="col-xl-3 col-lg-3 col-sm-6 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.8s">
-						<div className="widget widget_services">
-						   <h5 className="footer-title">Other links</h5>
-							<ul>
-								<li><Link href="#"><a>FAQ</a></Link></li>
-								<li><Link href="#"><a>Portfolio</a></Link></li>
-								<li><Link href="#"><a>Privacy Policy</a></Link></li>
-								<li><Link href="#"><a>Terms & Conditions</a></Link></li>
-								<li><Link href="#"><a>Support </a></Link></li>
+								{serviceData.results.map((value,index)=> <li><Link href="#"><a>{value.title}</a></Link></li>)}
+								
+								
 							</ul>
 						</div>
                     </div>
@@ -97,14 +83,14 @@ function Footer2() {
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6 col-md-7 text-left"> 
-						<span className="copyright-text">Copyright © 2021 <a href="https://dexignzone.com/" target="_blank">DexignZone</a>. All rights reserved.</span> 
+						<span className="copyright-text">{siteInfoData.footer}</span> 
 					</div>
 					<div className="col-lg-6 col-md-5 text-right"> 
 						<div className="dlab-social-icon">
 							<ul>
-								<li><a className="fa fa-facebook" href="https://en-gb.facebook.com/"></a></li>
-								<li><a className="fa fa-instagram" href="https://www.instagram.com/"></a></li>
-								<li><a className="fa fa-twitter" href="https://twitter.com/login?lang=en"></a></li>
+								<li><a className="fa fa-facebook" href={siteInfoData.facebook}></a></li>
+								<li><a className="fa fa-instagram" href={siteInfoData.instagram}></a></li>
+								<li><a className="fa fa-whatsapp" href={siteInfoData.whatsapp}></a></li>
 							</ul>
 						</div>
 					</div>

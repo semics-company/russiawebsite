@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-function Header2() {
+function Header2({siteInfoData}) {
     const [show, setShow] = useState(false);
     const [open, setOpen] = useState("home");
     return (
@@ -12,13 +12,13 @@ function Header2() {
                         <div className="row d-flex justify-content-between align-items-center">
                             <div className="dlab-topbar-left">
                                 <ul>
-                                    <li>
+                                    <li style={{direction:"ltr"}}>
                                         <i className="la la-envelope"></i>{" "}
-                                        info@example.com
+                                        {siteInfoData.email}
                                     </li>
-                                    <li>
-                                        <i className="la la-phone-volume"></i> +91
-                                        987-654-3210
+                                    <li style={{direction:"ltr"}}>
+                                        <i className="la la-phone-volume"></i> 
+                                        {siteInfoData.tel}
                                     </li>
                                 </ul>
                             </div>
@@ -27,19 +27,19 @@ function Header2() {
                                     <li>
                                         <a
                                             className="fa fa-facebook"
-                                            href="https://en-gb.facebook.com/"
+                                            href={siteInfoData.facebook}
                                         ></a>
                                     </li>
                                     <li>
                                         <a
                                             className="fa fa-instagram"
-                                            href="https://www.instagram.com/"
+                                            href={siteInfoData.instagram}
                                         ></a>
                                     </li>
                                     <li>
                                         <a
-                                            className="fa fa-twitter"
-                                            href="https://twitter.com/login?lang=en"
+                                            className="fa fa-whatsapp"
+                                            href={siteInfoData.whatsapp}
                                         ></a>
                                     </li>
                                 </ul>
@@ -75,8 +75,8 @@ function Header2() {
                             {/* <!-- Extra Nav --> */}
                             <div className="extra-nav">
                                 <div className="extra-cell">
-                                <Link href="/contact-us-2">
-                                        <a className="btn btn-primary rounded-xl gradient shadow">Get A Quote</a>
+                                <Link href="/contact-us">
+                                        <a className="btn btn-primary rounded-xl gradient shadow">ارتباط با ما</a>
                                     </Link>
                                 </div>
                             </div>
@@ -89,60 +89,54 @@ function Header2() {
                                 <div className="logo-header">
                                     <Link href="/">
                                         <a>
-                                            <img src="images/logo-2.png" alt="" />
+                                            <img src="images/blackLogo.svg" alt="" />
                                         </a>
                                     </Link>
                                 </div>
 
                                 <ul className="nav navbar-nav navbar">
                                    
-									<li><Link href="/"><a>Home</a></Link></li>
+									<li><Link href="/"><a>خانه</a></Link></li>
                                     <li
                                         className={`${
                                             open === "about" ? "open" : ""
                                         }`}
                                     >
                                         <a onClick={() => setOpen("about")}>
-                                            <span>Pages</span>
+                                            <span>تحصیل</span>
                                             <i className="fa fa-chevron-down"></i>
                                         </a>
                                         <ul className="sub-menu">
-											<li><Link href="/about-us-2"><a>About Us</a></Link></li>
-											<li><Link href="/faq-2"><a>Faq</a></Link></li>
-											<li><Link href="/pricing-table-2"><a>Pricing Table</a></Link></li>
-											<li><Link href="/team-2"><a>Team</a></Link></li>
-                                            <li><Link href="/coming-soon"><a>Coming Soon</a></Link></li>
-                                            <li><Link href="/error-404"><a>Error 404</a></Link></li>
-                                            <li><Link href="/sitedown"><a>Site Down</a></Link></li>
+                                            <li><Link href="/pricing-table-2"><a>اخذ پذیرش دانشگاه</a></Link></li>
+                                            <li><Link href="/pricing-table-2"><a>اخذ پذیرش کالج یا پادفک</a></Link></li>
+
+											<li><Link href="/about-us-2"><a>لیست دانشگاه ها</a></Link></li>
+											<li><Link href="/faq-2"><a>لیست کشور ها</a></Link></li>
                                         </ul>
                                     </li>
-                                    <li className={`${open === "services" ? "open" : ""}`}><a onClick={() => setOpen("services")}><span>Services</span><i className="fa fa-chevron-down"></i></a>
+                                    <li className={`${open === "services" ? "open" : ""}`}><a onClick={() => setOpen("services")}><span> ویزا</span><i className="fa fa-chevron-down"></i></a>
 										<ul className="sub-menu">
-											<li><Link href="/services-2"><a>Services</a></Link></li>
-											<li><Link href="/services-details-2"><a>Services Details</a></Link></li>
+											<li><Link href="/services-2"><a>اخذ ویزا</a></Link></li>
+											<li><Link href="/faq-2"><a>لیست کشور ها</a></Link></li>
 										</ul>
 									</li>
-									<li className={`${open === "blog" ? "open" : ""}`}><a onClick={() => setOpen("blog")}><span>Blog</span><i className="fa fa-chevron-down"></i></a>
-										<ul className="sub-menu">
-											<li><Link href="/blog-grid-2"><a>Blog Grid</a></Link></li>
-											<li><Link href="/blog-details-2"><a>Blog Details</a></Link></li>
-										</ul>
-									</li>
-									<li><Link href="/contact-us-2"><a>Contact Us</a></Link></li>
+                                    <li><Link href="/contact-us-2"><a>مقالات</a></Link></li>
+                                    <li><Link href="/contact-us-2"><a>خدمات</a></Link></li>
+									<li><Link href="/contact-us-2"><a>درباره ما</a></Link></li>
+									<li><Link href="/contact-us-2"><a>سوالات متداول</a></Link></li>
 									
                                 </ul>
                                 <div className="dlab-social-icon">
                                     <ul>
-                                        <Link href="https://en-gb.facebook.com/">
+
+
+                                        <Link href={siteInfoData.facebook}>
                                             <a className="fa fa-facebook"></a>
                                         </Link>
-                                        <Link href="https://twitter.com/login?lang=en">
-                                            <a className="fa fa-twitter"></a>
+                                        <Link href={siteInfoData.whatsapp}>
+                                            <a className="fa fa-whatsapp"></a>
                                         </Link>
-                                        <Link href="https://www.linkedin.com/login">
-                                            <a className="fa fa-linkedin"></a>
-                                        </Link>
-                                        <Link href="https://www.instagram.com/">
+                                        <Link href={siteInfoData.instagram}>
                                             <a className="fa fa-instagram"></a>
                                         </Link>
                                     </ul>

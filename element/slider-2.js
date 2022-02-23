@@ -1,4 +1,4 @@
-function Slider2() {
+function Slider2({header}) {
   return (
     // <!-- Slider -->
     <div className="banner-two gradient text-right">
@@ -21,7 +21,7 @@ function Slider2() {
                     animationName: "fadeInUp",
                   }}
                 >
-                  We are The Best
+                  {header.slogan}
                 </h6>
                 <h1
                   className="wow fadeInUp m-b20"
@@ -32,7 +32,7 @@ function Slider2() {
                     animationName: "fadeInUp",
                   }}
                 >
-                  We Provide Website Solution For You
+                  {header.title}
                 </h1>
                 <p
                   className="wow fadeInUp m-b30"
@@ -43,10 +43,7 @@ function Slider2() {
                     animationName: "fadeInUp",
                   }}
                 >
-                  Mauris in enim sollicitudin quam sollicitudin fermentum ut
-                  vitae massa. Donec venenatis accumsan nisi, sit amet maximus
-                  velit euismod sit amet. Vivamus et sem sed ipsum pretium
-                  lobortis non vitae sem.
+                  {header.description}
                 </p>
                 <a
                   href="/about-us-2"
@@ -58,7 +55,7 @@ function Slider2() {
                     animationName: "fadeInUp",
                   }}
                 >
-                  Learn More
+                  ارتباط با ما
                 </a>
               </div>
             </div>

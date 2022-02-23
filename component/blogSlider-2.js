@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Slider from "react-slick";
+import moment from 'jalali-moment'
 
-function BlogSlider2() {
+function BlogSlider2({blogData}) {
     const settings = {
         dots: false,
         infinite: true,
@@ -15,90 +16,32 @@ function BlogSlider2() {
                 {...settings}
                 className="blog-carousel2 owl-carousel owl-none"
             >
-					<div className="item">
-						<div className="dlab-blog style-2 m-b10">
-							<div className="dlab-media rounded-md">
-							<img src="images/blog/blog-grid-2/pic1.jpg" alt=""/>
+				{blogData.results.map((value,index)=>{
+					const tags=value.tags
+					return <div className="item text-right">
+					<div className="dlab-blog style-2 m-b10">
+						<div className="dlab-media rounded-md">
+						<img src={value.image} alt={value.title}/>
+						</div>
+						<div className="dlab-info">
+							<div className="dlab-meta">
+								<ul>
+									<li className="post-date">{moment(value.modified, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')}</li>
+									<li className="post-category">
+										{tags.map((value,index)=> <a style={{margin:"5px"}} href="javascript:void(0);">{value.title}</a> )}
+										
+									</li>
+								</ul>
 							</div>
-							<div className="dlab-info">
-								<div className="dlab-meta">
-									<ul>
-										<li className="post-date"><span>25</span> March</li>
-										<li className="post-category">
-											<a href="javascript:void(0);">Design</a>
-											<a href="javascript:void(0);">Development</a>
-										</li>
-									</ul>
-								</div>
-								<h4 className="dlab-title"><Link href="/blog-details-2"><a>Maecenas maximus augue eget libero dictum, vitae tempus erat pretium.</a></Link></h4>
-								<p className="m-b20">Nunc convallis sagittis dui eu dictum. Cras sodales id ipsum ac aliquam. Phasellus justo quam, sagittis vel sem congue, vehicula tempus elit. Pellentesque ut scelerisque ante.</p>
-								<Link href="/blog-details-2"><a className="btn-link style-1">Read More</a></Link>
-							</div>
+							<h4 className="dlab-title"><Link href="/blog-details-2"><a>{value.title}</a></Link></h4>
+							<p className="m-b20">{value.body.length > 60 ? `${value.body.slice(0, 250)}...`: value.body}</p>
+							<Link href="/blog-details-2"><a className="btn-link style-1">ادامه مطلب</a></Link>
 						</div>
 					</div>
-					<div className="item">
-						<div className="dlab-blog style-2 m-b10">
-							<div className="dlab-media rounded-md">
-							<img src="images/blog/blog-grid-2/pic2.jpg" alt=""/>
-							</div>
-							<div className="dlab-info">
-								<div className="dlab-meta">
-									<ul>
-										<li className="post-date"><span>25</span> March</li>
-										<li className="post-category">
-											<a href="javascript:void(0);">Design</a>
-											<a href="javascript:void(0);">Development</a>
-										</li>
-									</ul>
-								</div>
-								<h4 className="dlab-title"><Link href="/blog-details-2"><a>Maecenas maximus augue eget libero dictum, vitae tempus erat pretium.</a></Link></h4>
-								<p className="m-b20">Nunc convallis sagittis dui eu dictum. Cras sodales id ipsum ac aliquam. Phasellus justo quam, sagittis vel sem congue, vehicula tempus elit. Pellentesque ut scelerisque ante.</p>
-								<Link href="blog-details-2"><a className="btn-link style-1">Read More</a></Link>
-							</div>
-						</div>
-					</div>
-                    <div className="item">
-						<div className="dlab-blog style-2 m-b10">
-							<div className="dlab-media rounded-md">
-								<img src="images/blog/blog-grid-2/pic1.jpg" alt=""/>
-							</div>
-							<div className="dlab-info">
-								<div className="dlab-meta">
-									<ul>
-										<li className="post-date"><span>25</span> March</li>
-										<li className="post-category">
-											<a href="javascript:void(0);">Design</a>
-											<a href="javascript:void(0);">Development</a>
-										</li>
-									</ul>
-								</div>
-								<h4 className="dlab-title"><Link href="/blog-details-2"><a>Maecenas maximus augue eget libero dictum, vitae tempus erat pretium.</a></Link></h4>
-								<p className="m-b20">Nunc convallis sagittis dui eu dictum. Cras sodales id ipsum ac aliquam. Phasellus justo quam, sagittis vel sem congue, vehicula tempus elit. Pellentesque ut scelerisque ante.</p>
-								<Link href="/blog-details-2"><a className="btn-link style-1">Read More</a></Link>
-							</div>
-						</div>
-					</div>
-                    <div className="item">
-						<div className="dlab-blog style-2 m-b10">
-							<div className="dlab-media rounded-md">
-							<img src="images/blog/blog-grid-2/pic1.jpg" alt=""/>
-							</div>
-							<div className="dlab-info">
-								<div className="dlab-meta">
-									<ul>
-										<li className="post-date"><span>25</span> March</li>
-										<li className="post-category">
-											<a href="javascript:void(0);">Design</a>
-											<a href="javascript:void(0);">Development</a>
-										</li>
-									</ul>
-								</div>
-								<h4 className="dlab-title"><Link href="/blog-details-2"><a>Maecenas maximus augue eget libero dictum, vitae tempus erat pretium.</a></Link></h4>
-								<p className="m-b20">Nunc convallis sagittis dui eu dictum. Cras sodales id ipsum ac aliquam. Phasellus justo quam, sagittis vel sem congue, vehicula tempus elit. Pellentesque ut scelerisque ante.</p>
-								<Link href="/blog-details-2"><a className="btn-link style-1">Read More</a></Link>
-							</div>
-						</div>
-					</div>
+				</div>
+				})}
+					
+		
             </Slider>
         </>
     );

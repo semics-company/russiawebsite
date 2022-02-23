@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function AboutUs_2() {
+function AboutUs_2({abbutusData}) {
     return (
       <>
         {/* <!-- About us --> */}
@@ -9,17 +9,14 @@ function AboutUs_2() {
 				<div className="row align-items-center">
 				<div className="col-lg-6 m-b30 wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.4s">
 						<div className="section-head style-3">
-							<h6 className="sub-title text-primary bgl-primary m-b15">ABOUT US</h6>
-							<h2 className="title m-b20">We Have Creative Team To Build Your Website Better</h2>
-							<p>Proin laoreet leo vel enim gravida, at porttitor metus ultricies. Cras eu velit enim. Vivamus blandit, dolor ut aliquet rutrum, ex elit mattis sapien, non molestie felis neque et nulla. Sed euismod turpis id nibh suscipit semper. Pellentesque dapibus risus arcu.</p>
+							<h6 className="sub-title text-primary bgl-primary m-b15">درباره ما</h6>
+							<h2 className="title m-b20">{abbutusData.title}</h2>
+							<p>{abbutusData.description}</p>
 						</div>
 						<ul className="list-check primary m-b30">
-							<li>Suspendisse ullamcorper mollis orci in facilisis.</li>
-							<li>Etiam orci magna, accumsan varius enim volutpat.</li>
-							<li>Donec fringilla velit risus, in imperdiet turpis euismod quis.</li>
-							<li>Aliquam pulvinar diam tempor erat pellentesque, accumsan mauri.</li>
+							{abbutusData.features.map((value,index)=> <li>{value.title}</li>)}
 						</ul>
-						<Link href="/about-us-2"><a className="btn btn-primary rounded-xl gradient">Learn More</a></Link>
+						<Link href="/about-us"><a className="btn btn-primary rounded-xl gradient">اطلاعات بیشتر ...</a></Link>
 					</div>
 
 					<div className="col-lg-6 m-b30 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.2s">
