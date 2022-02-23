@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import LogoCom from '../icons/logo'
+
 function Header2() {
     const [show, setShow] = useState(false);
     const [open, setOpen] = useState("home");
@@ -55,10 +55,9 @@ function Header2() {
                             <div className="logo-header mostion logo-dark">
                                 <Link href="/">
                                     <a>
-                                        <img className="custom-logo-white" src="images/logo-white.png" alt="" />
-                                        <div className="custom-logo">
-                                            <LogoCom/>
-                                        </div>
+                                        <img className="custom-logo-white" src="images/whiteLogo.svg" alt="" />
+                                        <img className="custom-logo" src="images/blackLogo.svg" alt="" />
+
                                     </a>
                                 </Link>
                             </div>
